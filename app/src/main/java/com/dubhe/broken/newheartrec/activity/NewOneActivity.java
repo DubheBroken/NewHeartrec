@@ -168,29 +168,21 @@ public class NewOneActivity extends Activity {
     //    保存
     public void save() {
         if (substance != null && !"".equals(substance)) {
-            while (TextManager.operation > 0) {
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    Log.e("---getTexts---", e.getMessage());
-                }
-            }
             SQLiteDatabase db = sqliteHelper.getWritableDatabase();//打开数据库
-            TextManager.addOperation();
             substance = escape(substance);
             if (id != null && !id.equals("")) {
                 try {
                     String sql = "update " + Constant.TABLE_NAME + " set " + "" + Constant.SUBSTANCE + "='" + substance + "'," + Constant.TIME + "=\"" + nowtime + "\" where " + Constant.ID + "=" + id + ";";
                     DbManager.execSQL(db, sql);
                 } catch (Exception e) {
-                    Log.e("---保存异常---", "", e);
+                    Log.e("---更新异常---", "", e);
                 }
             } else {
                 try {
                     String sql = "insert into " + Constant.TABLE_NAME + " values(null,'" + substance + "','" + nowtime + "');";
                     DbManager.execSQL(db, sql);
                 } catch (Exception e) {
-                    Log.e("---保存异常---", "", e);
+                    Log.e("---插入异常---", "", e);
                 }
             }
             TextManager.removeOperation();
