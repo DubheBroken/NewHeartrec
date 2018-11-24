@@ -61,9 +61,7 @@ public class TextListFragment extends Fragment implements View.OnTouchListener {
     }
 
     private void initAdapter() {
-        if (list == null) {
-            list = TextManager.getTexts(context);
-        }
+        list = TextManager.getTexts(context);
         TextAdapter text_adapter = new TextAdapter(context, list);
         text_adapter.setOnItemClickListener((view1, position) -> {
             startActivity(new Intent(context, NewOneActivity.class).putExtra("id", list.get(position).getId()));
@@ -76,8 +74,8 @@ public class TextListFragment extends Fragment implements View.OnTouchListener {
 
     @Override
     public void onResume() {
-        initAdapter();
         super.onResume();
+        initAdapter();
     }
 
     //    删除记录并刷新RecyclerView

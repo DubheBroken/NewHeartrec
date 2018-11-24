@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -29,6 +30,9 @@ import com.dubhe.broken.newheartrec.utils.Constant;
 import com.dubhe.broken.newheartrec.utils.DbManager;
 import com.dubhe.broken.newheartrec.utils.SqliteHelper;
 import com.dubhe.broken.newheartrec.utils.SystemBarTintManager;
+import com.dubhe.broken.newheartrec.utils.TextManager;
+
+import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -149,9 +153,9 @@ public class NewOneActivity extends Activity {
     }
 
     @Override
-    protected void onDestroy() {
+    protected void onPause() {
         save();
-        super.onDestroy();
+        super.onPause();
     }
 
     private String escape(String str) {
@@ -164,24 +168,33 @@ public class NewOneActivity extends Activity {
     //    保存
     public void save() {
         if (substance != null && !"".equals(substance)) {
+            while (TextManager.operation > 0) {
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    Log.e("---getTexts---", e.getMessage());
+                }
+            }
             SQLiteDatabase db = sqliteHelper.getWritableDatabase();//打开数据库
+            TextManager.addOperation();
             substance = escape(substance);
             if (id != null && !id.equals("")) {
                 try {
                     String sql = "update " + Constant.TABLE_NAME + " set " + "" + Constant.SUBSTANCE + "='" + substance + "'," + Constant.TIME + "=\"" + nowtime + "\" where " + Constant.ID + "=" + id + ";";
                     DbManager.execSQL(db, sql);
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    Log.e("---保存异常---", "", e);
                 }
             } else {
                 try {
                     String sql = "insert into " + Constant.TABLE_NAME + " values(null,'" + substance + "','" + nowtime + "');";
                     DbManager.execSQL(db, sql);
                 } catch (Exception e) {
+                    Log.e("---保存异常---", "", e);
                 }
             }
-            sqliteHelper.removeOperation();
-            while (sqliteHelper.getOperation() > 0) {
+            TextManager.removeOperation();
+            while (TextManager.operation > 0) {
                 try {
                     Thread.sleep(500);
                 } catch (InterruptedException e) {
@@ -207,8 +220,8 @@ public class NewOneActivity extends Activity {
                 editText_substance.setText(cursor.getString(cursor.getColumnIndex("substance")));
             }
         }
-        sqliteHelper.removeOperation();
-        while (sqliteHelper.getOperation() > 0) {
+        TextManager.removeOperation();
+        while (TextManager.operation > 0) {
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {

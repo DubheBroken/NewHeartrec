@@ -10,25 +10,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class SqliteHelper extends SQLiteOpenHelper {
 
-    public int getOperation() {
-        return operation;
-    }
-
-    public void setOperation(int operation) {
-        this.operation = operation;
-    }
-
-    private int operation=0;
-
-    public void addOperation() {
-        operation++;
-    }
-
-    public void removeOperation() {
-        operation--;
-    }
-
-
 
     public SqliteHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -36,13 +17,13 @@ public class SqliteHelper extends SQLiteOpenHelper {
 
     @Override
     public SQLiteDatabase getWritableDatabase() {
-        operation++;
+        TextManager.addOperation();
         return super.getWritableDatabase();
     }
 
     @Override
     public SQLiteDatabase getReadableDatabase() {
-        operation++;
+        TextManager.addOperation();
         return super.getReadableDatabase();
     }
 

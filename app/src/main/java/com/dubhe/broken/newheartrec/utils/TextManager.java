@@ -12,13 +12,31 @@ import java.util.List;
 
 public class TextManager {
 
+    public static int operation=0;
+
+    public static void addOperation() {
+        operation++;
+    }
+
+    public static void removeOperation() {
+        operation--;
+    }
+
     public static List<TextEntity> getTexts(Context context) {
         List<TextEntity> listText = new ArrayList<>();
+
 //                查询数据
         SqliteHelper sqliteHelper = DbManager.getIntance(context);
+        while (operation > 0) {
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                Log.e("---getTexts---", e.getMessage());
+            }
+        }
         SQLiteDatabase db = sqliteHelper.getWritableDatabase();
         Cursor cursor = null;
-        String sql = "select * from " + Constant.TABLE_NAME + " order by " + Constant.TIME + " desc;";
+        String sql = "select * from " + Constant.TABLE_NAME + " order by " + Constant.ID + " desc;";
         cursor = DbManager.selectDataBySql(db, sql, null);
         if (cursor != null && db.isOpen()) {
             while (cursor.moveToNext()) {
@@ -29,8 +47,8 @@ public class TextManager {
                 listText.add(text_entity);
             }
         }
-        sqliteHelper.removeOperation();
-        while (sqliteHelper.getOperation() > 0) {
+        removeOperation();
+        while (operation > 0) {
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
@@ -52,8 +70,8 @@ public class TextManager {
         } catch (Exception e) {
             Log.e("execSQL", "删除数据出错", e);
         } finally {
-            sqliteHelper.removeOperation();
-            while (sqliteHelper.getOperation() > 0) {
+            removeOperation();
+            while (operation > 0) {
                 try {
                     Thread.sleep(500);
                 } catch (InterruptedException e) {
