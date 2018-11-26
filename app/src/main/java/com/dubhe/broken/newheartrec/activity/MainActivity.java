@@ -31,6 +31,7 @@ import com.dubhe.broken.newheartrec.R;
 import com.dubhe.broken.newheartrec.adapter.RecordAdapter;
 import com.dubhe.broken.newheartrec.entity.RecordEntity;
 import com.dubhe.broken.newheartrec.entity.TextEntity;
+import com.dubhe.broken.newheartrec.fragment.PaintListFragment;
 import com.dubhe.broken.newheartrec.fragment.RecordListFragment;
 import com.dubhe.broken.newheartrec.fragment.TextListFragment;
 import com.dubhe.broken.newheartrec.utils.Constant;
@@ -309,6 +310,9 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_text:
                 FragmentHelper.switchFragment(new TextListFragment(), this);
                 break;
+            case R.id.nav_paint:
+                FragmentHelper.switchFragment(new PaintListFragment(), this);
+                break;
             case R.id.nav_record:
                 FragmentHelper.switchFragment(new RecordListFragment(), this);
                 break;
@@ -325,6 +329,7 @@ public class MainActivity extends AppCompatActivity
                 startActivity(new Intent(context, NewOneActivity.class));
                 break;
             case R.id.fab_new_paint:
+                startActivity(new Intent(context, PainterActivity.class));
                 break;
             case R.id.fab_new_record:
                 startActivity(new Intent(context, RecordActivity.class));
