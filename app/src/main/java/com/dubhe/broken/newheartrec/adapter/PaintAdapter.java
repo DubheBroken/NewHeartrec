@@ -1,5 +1,6 @@
 package com.dubhe.broken.newheartrec.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +11,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
 import com.dubhe.broken.newheartrec.R;
 import com.dubhe.broken.newheartrec.entity.PaintEntity;
 
@@ -35,6 +39,7 @@ public class PaintAdapter extends RecyclerView.Adapter<PaintAdapter.ViewHolder> 
         this.list = list;
     }
 
+    @SuppressLint("CheckResult")
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
 //                处理时间字符串
@@ -52,7 +57,9 @@ public class PaintAdapter extends RecyclerView.Adapter<PaintAdapter.ViewHolder> 
 //        holder.image.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
         Glide.with(context)
                 .load(new File((list.get(position).getFilename())))
-//                .apply(new RequestOptions().override(width,height))
+                .apply(new RequestOptions()
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .override(800,1200))
                 .into(holder.image);
 //        Log.i("----paint adapter----",Uri.parse((list.get(position).getFilename())).toString());
         final ViewHolder finalHolder = holder;
@@ -60,22 +67,14 @@ public class PaintAdapter extends RecyclerView.Adapter<PaintAdapter.ViewHolder> 
 
         //通过为条目设置点击事件触发回调
         if (onItemClickListener != null) {
-            holder.layout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    onItemClickListener.onItemClick(view,position);
-                }
-            });
+            holder.layout.setOnClickListener(view -> onItemClickListener.onItemClick(view, position));
         }
 
-        if( onItemLongClickListener!=null) {
-            holder.layout.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-                    if (onItemLongClickListener != null)
-                        onItemLongClickListener.onItemLongClick(v, position);
-                    return false;
-                }
+        if (onItemLongClickListener != null) {
+            holder.layout.setOnLongClickListener(v -> {
+                if (onItemLongClickListener != null)
+                    onItemLongClickListener.onItemLongClick(v, position);
+                return false;
             });
         }
     }
@@ -102,23 +101,22 @@ public class PaintAdapter extends RecyclerView.Adapter<PaintAdapter.ViewHolder> 
     }
 
     //设置回调接口
-    public interface OnItemClickListener{
+    public interface OnItemClickListener {
         void onItemClick(View view, int position);
     }
 
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener){
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }
 
     //设置回调接口
-    public interface OnItemLongClickListener{
+    public interface OnItemLongClickListener {
         void onItemLongClick(View view, int position);
     }
 
-    public void setOnItemLongClickListener(OnItemLongClickListener onItemLongClickListener){
+    public void setOnItemLongClickListener(OnItemLongClickListener onItemLongClickListener) {
         this.onItemLongClickListener = onItemLongClickListener;
     }
-
 
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -126,8 +124,9 @@ public class PaintAdapter extends RecyclerView.Adapter<PaintAdapter.ViewHolder> 
             super(itemView);
             layout = itemView.findViewById(R.id.paint_layout_item);
             time = itemView.findViewById(R.id.paint_item_time);
-            image =  itemView.findViewById(R.id.paint_item_image);
+            image = itemView.findViewById(R.id.paint_item_image);
         }
+
         LinearLayout layout;
         TextView time;//时间
         ImageView image;//图片

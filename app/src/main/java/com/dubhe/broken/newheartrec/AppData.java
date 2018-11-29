@@ -2,6 +2,8 @@ package com.dubhe.broken.newheartrec;
 
 import android.app.Application;
 
+import com.bumptech.glide.Glide;
+
 /**
  * Created by Developer on 2017/7/3.
  */
@@ -61,5 +63,20 @@ public class AppData extends Application {
 
     public static void setPenSize(int penSize) {
         AppData.penSize = penSize;
+    }
+
+    @Override
+    public void onTrimMemory(int level) {
+        super.onTrimMemory(level);
+        if(level == TRIM_MEMORY_UI_HIDDEN){
+            Glide.get(this).clearMemory();
+        }
+        Glide.get(this).trimMemory(level);
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        Glide.get(this).clearMemory();
     }
 }

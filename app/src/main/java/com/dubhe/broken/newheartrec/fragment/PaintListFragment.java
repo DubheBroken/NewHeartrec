@@ -58,7 +58,6 @@ public class PaintListFragment extends Fragment implements View.OnTouchListener 
         recyclerList = view.findViewById(R.id.recycler_list);
         linearRecycler = view.findViewById(R.id.linear_recycler);
 
-
     }
 
     private void initAdapter() {
