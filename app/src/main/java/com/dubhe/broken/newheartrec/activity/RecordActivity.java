@@ -11,7 +11,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dubhe.broken.newheartrec.AppData;
+import com.dubhe.broken.newheartrec.application.AppData;
 import com.dubhe.broken.newheartrec.R;
 
 import java.io.File;

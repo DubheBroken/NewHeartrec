@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/constraint_signin"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	>
+	
+	<android.support.constraint.ConstraintLayout
+		android:id="@+id/toolbar_signin"
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="?attr/actionBarSize"
+		android:background="@color/colorPrimary"
+		>
+		
+		<TextView
+			android:id="@+id/btn_cancel_signin"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="16dp"
+			android:layout_marginTop="8dp"
+			android:layout_marginBottom="8dp"
+			android:background="@drawable/btn_back_white"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+		
+		<TextView
+			android:id="@+id/textViewa"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="8dp"
+			android:layout_marginEnd="0dp"
+			android:layout_marginBottom="8dp"
+			android:gravity="center"
+			android:text="@string/signin"
+			android:textAlignment="center"
+			android:textColor="@color/white"
+			android:textSize="@dimen/title_size"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toStartOf="parent"
+			app:layout_constraintStart_toEndOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+	
+	</android.support.constraint.ConstraintLayout>
+	
+	<TextView
+		android:id="@+id/text_signin"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="40dp"
+		android:layout_marginTop="32dp"
+		android:text="@string/signin"
+		android:textColor="@color/text_black"
+		android:textSize="32sp"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/toolbar_signin" />
+	
+	<com.rengwuxian.materialedittext.MaterialEditText
+		android:id="@+id/met_phone_signin"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="40dp"
+		android:layout_marginTop="40dp"
+		android:layout_marginEnd="40dp"
+		android:hint="请输入手机号"
+		android:maxLength="11"
+		android:maxLines="1"
+		android:inputType="phone"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/text_signin" />
+	
+	<com.rengwuxian.materialedittext.MaterialEditText
+		android:id="@+id/met_name_signin"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="32dp"
+		android:hint="请输入昵称"
+		android:maxLines="1"
+		android:maxLength="15"
+		app:layout_constraintEnd_toEndOf="@+id/met_phone_signin"
+		app:layout_constraintStart_toStartOf="@+id/met_phone_signin"
+		app:layout_constraintTop_toBottomOf="@+id/met_phone_signin" />
+	
+	<com.rengwuxian.materialedittext.MaterialEditText
+		android:id="@+id/met_password_signin"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="32dp"
+		android:hint="请输入密码"
+		android:maxLines="1"
+		android:maxLength="15"
+		android:inputType="textPassword"
+		app:layout_constraintEnd_toEndOf="@+id/met_name_signin"
+		app:layout_constraintStart_toStartOf="@+id/met_name_signin"
+		app:layout_constraintTop_toBottomOf="@+id/met_name_signin" />
+	
+	<Button
+		android:id="@+id/button_submit_signin"
+		android:layout_width="0dp"
+		android:layout_height="56dp"
+		android:layout_marginStart="56dp"
+		android:layout_marginEnd="56dp"
+		android:layout_marginBottom="80dp"
+		android:text="提交"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

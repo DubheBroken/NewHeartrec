@@ -13,5 +13,7 @@
     <string name="painter">画板</string>
     <string name="navigation_drawer_open">开</string>
     <string name="navigation_drawer_close">关</string>
+    <string name="signin">账号注册</string>
+    <string name="login">用户登录</string>
 
 </resources>

@@ -47,4 +47,8 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.2.3'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
     implementation 'com.github.recruit-lifestyle:PlayPauseButton:1.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
+    implementation 'com.squareup.okio:okio:2.1.0'
+    implementation 'com.rengwuxian.materialedittext:library:2.1.4'
+    implementation 'com.github.samlss:PeasLoadingView:1.2'
 }

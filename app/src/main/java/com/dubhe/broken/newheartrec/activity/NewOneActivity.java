@@ -2,10 +2,7 @@ package com.dubhe.broken.newheartrec.activity;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -15,24 +12,19 @@ import android.support.constraint.ConstraintLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
 
-import com.dubhe.broken.newheartrec.AppData;
+import com.dubhe.broken.newheartrec.application.AppData;
 import com.dubhe.broken.newheartrec.R;
-import com.dubhe.broken.newheartrec.entity.TextEntity;
 import com.dubhe.broken.newheartrec.utils.Constant;
 import com.dubhe.broken.newheartrec.utils.DbManager;
 import com.dubhe.broken.newheartrec.utils.SqliteHelper;
 import com.dubhe.broken.newheartrec.utils.SystemBarTintManager;
 import com.dubhe.broken.newheartrec.utils.TextManager;
-
-import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

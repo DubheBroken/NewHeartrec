@@ -2,9 +2,7 @@ package com.dubhe.broken.newheartrec.activity;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -22,7 +20,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dubhe.broken.newheartrec.AppData;
+import com.dubhe.broken.newheartrec.application.AppData;
 import com.dubhe.broken.newheartrec.R;
 import com.dubhe.broken.newheartrec.custom.PaintView;
 import com.dubhe.broken.newheartrec.utils.SystemBarTintManager;

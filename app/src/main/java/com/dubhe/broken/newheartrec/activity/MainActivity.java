@@ -1,15 +1,9 @@
 package com.dubhe.broken.newheartrec.activity;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.media.MediaPlayer;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
@@ -23,29 +17,19 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dubhe.broken.newheartrec.AppData;
 import com.dubhe.broken.newheartrec.R;
-import com.dubhe.broken.newheartrec.adapter.RecordAdapter;
 import com.dubhe.broken.newheartrec.entity.RecordEntity;
 import com.dubhe.broken.newheartrec.entity.TextEntity;
 import com.dubhe.broken.newheartrec.fragment.PaintListFragment;
 import com.dubhe.broken.newheartrec.fragment.RecordListFragment;
 import com.dubhe.broken.newheartrec.fragment.TextListFragment;
-import com.dubhe.broken.newheartrec.utils.Constant;
-import com.dubhe.broken.newheartrec.utils.DbManager;
 import com.dubhe.broken.newheartrec.utils.FragmentHelper;
 import com.dubhe.broken.newheartrec.utils.SqliteHelper;
-import com.dubhe.broken.newheartrec.utils.TextManager;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 

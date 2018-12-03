@@ -13,7 +13,7 @@ import android.widget.RadioGroup;
 
 import com.dubhe.broken.newheartrec.R;
 import com.dubhe.broken.newheartrec.custom.ColorPickView;
-import com.dubhe.broken.newheartrec.AppData;
+import com.dubhe.broken.newheartrec.application.AppData;
 import com.dubhe.broken.newheartrec.custom.ColorPickView.OnColorChangedListener;
 
 /**

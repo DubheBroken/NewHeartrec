@@ -23,7 +23,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.dubhe.broken.newheartrec.AppData;
+import com.dubhe.broken.newheartrec.application.AppData;
 
 import java.io.File;
 import java.io.FileOutputStream;
